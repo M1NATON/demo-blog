@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from "react";
+import {useTypeSelector} from "./hooks/UseTypeSelector";
+import AppRouter from "./components/AppRouter";
+import {useAction} from "./hooks/useAction";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+function App(){
+
+    const {loading} = useTypeSelector(state => state.user)
+    const {auth} = useAction()
+
+    useEffect(() => {
+        auth()
+    }, [])
+
+
+    if (loading) { // @ts-ignore
+        return <h1>Загрузка</h1>
+    }
+
+    // @ts-ignore
+    return (
+        <>
+            <div>
+                <AppRouter/>
+            </div>
+
+
+        </>
+    )
 }
 
-export default App;
+export default App
