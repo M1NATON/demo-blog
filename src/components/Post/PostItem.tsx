@@ -21,11 +21,7 @@ const PostItem = ({post}: any) => {
     return (
         <Link to={`/post/${post.id}`}>
             <div key={post.id}
-                 style={{
-                     border: '1px solid black',
-                     marginBottom: '30px',
-                     padding: '15px'
-                 }}
+                 className='border-2 mb-[30px] p-[15px] border-black hover:translate-x-2 transition-all'
 
             >
                 <div className='flex justify-between'>

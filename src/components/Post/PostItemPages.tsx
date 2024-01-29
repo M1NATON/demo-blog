@@ -23,7 +23,7 @@ const PostItemPages = () => {
         <div className='container mx-auto'>
             <div className="w-[600px] mx-auto mt-[25%]">
                 <PostItem post={postI}/>
-                <button onClick={() => navigate('/home')}><ArrowBackIcon/></button>
+                <button onClick={() => navigate('/home')} className='animate-pulse'><ArrowBackIcon sx={{ fontSize: 40 }}/></button>
             </div>
         </div>
     );
