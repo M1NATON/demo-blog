@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {auth, login, registration} from "../store/action/user";
+import {auth, login, registration} from "../../store/action/user";
 import {useDispatch} from "react-redux";
-import {useAction} from "../hooks/useAction";
+import {useAction} from "../../hooks/useAction";
+import {successfullyRegistration} from "./SuccessfullyRegistration";
 
 const Login: React.FC = () => {
 
@@ -19,27 +20,13 @@ const Login: React.FC = () => {
         login(username, password)
     }
 
-    // const successfullyRegistration = () => {
-    //     const form = document.querySelector('.form')
-    //     const registrationBlock = document.querySelector('.registrationBlock')
-    //     const btnBlock = document.querySelector('.btnBlock')
-    //
-    //     form.style.display = 'none'
-    //     btnBlock.style.display = 'none'
-    //     registrationBlock.style.display = 'block'
-    //
-    //     setTimeout(()=> {
-    //         form.style.display = 'block'
-    //         btnBlock.style.display = 'block'
-    //         registrationBlock.style.display = 'none'
-    //     },2000)
-    // }
+
 
     const btnRegistration = () => {
         registration(username, password)
         setUsername('')
         setPassword('')
-        // successfullyRegistration()
+        successfullyRegistration()
     }
 
 

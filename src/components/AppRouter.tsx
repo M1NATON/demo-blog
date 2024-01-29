@@ -2,7 +2,8 @@ import React from 'react';
 import {useTypeSelector} from "../hooks/UseTypeSelector";
 import {Navigate, Route, Routes} from "react-router-dom";
 import HomePages from "./HomePages";
-import Login from "./Login";
+import Login from "./Login/Login";
+import PostItemPages from "./Post/PostItemPages";
 
 
 const AppRouter: React.FC = () => {
@@ -16,6 +17,11 @@ const AppRouter: React.FC = () => {
                             element={<HomePages/>}
                             path='/home'
                             key='/home'
+                        />
+                        <Route
+                            element={<PostItemPages/>}
+                            path='/post/:postId'
+                            key='/post/:postId'
                         />
                         <Route path='/*' element={<Navigate to='/home'/>}/>
                     </Routes>

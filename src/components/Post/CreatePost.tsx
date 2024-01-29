@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Button, TextField} from "@mui/material";
-import {useTypeSelector} from "../hooks/UseTypeSelector";
+import {useTypeSelector} from "../../hooks/UseTypeSelector";
 import SendIcon from '@mui/icons-material/Send';
-import {useAction} from "../hooks/useAction";
-import {ModalContext} from "../context/ModalContxt";
+import {useAction} from "../../hooks/useAction";
+import {ModalContext} from "../../context/ModalContxt";
 const CreatePost = () => {
 
     const {user} = useTypeSelector(state => state.user)

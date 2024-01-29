@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {useTypeSelector} from "./hooks/UseTypeSelector";
 import AppRouter from "./components/AppRouter";
 import {useAction} from "./hooks/useAction";
+import Loading from "./components/Loading";
 
 
 
@@ -15,9 +16,8 @@ function App(){
     }, [])
 
 
-    if (loading) { // @ts-ignore
-        return <h1>Загрузка</h1>
-    }
+    if (loading) return <Loading/>
+
 
     // @ts-ignore
     return (
@@ -25,8 +25,6 @@ function App(){
             <div>
                 <AppRouter/>
             </div>
-
-
         </>
     )
 }
