@@ -5,7 +5,8 @@ export enum PostActionType{
     POST_FETCH_POST = 'POST_FETCH_POST',
     POST_FETCH_ERROR = 'POST_FETCH_ERROR',
     POST_FETCH_DELETE = 'POST_FETCH_DELETE',
-    POST_FETCH_DETAILS = 'POST_FETCH_DETAILS'
+    POST_FETCH_DETAILS = 'POST_FETCH_DETAILS',
+    POST_FETCH_UPDATE = 'POST_FETCH_UPDATE'
 }
 
 export interface IPost {
@@ -30,6 +31,11 @@ interface PostFetchAction {
     type: PostActionType.POST_FETCH
 }
 
+interface PostFetchUpdate{
+    type: PostActionType.POST_FETCH_UPDATE
+    payload: IPost
+}
+
 interface PostFetchDelete {
     type: PostActionType.POST_FETCH_DELETE
 }
@@ -52,4 +58,4 @@ interface PoseFetchErrorAction {
     payload?: any
 }
 
-export type PostAction = PostFetchAction | PostFetchSuccessAction | PoseFetchErrorAction | PostFetchPostAction | PostFetchDelete | PostFetchDetails
+export type PostAction = PostFetchAction | PostFetchSuccessAction | PoseFetchErrorAction | PostFetchPostAction | PostFetchDelete | PostFetchDetails | PostFetchUpdate

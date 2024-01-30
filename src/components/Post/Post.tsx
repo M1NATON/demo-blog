@@ -25,9 +25,9 @@ const Post = () => {
     if (!post.length) return <NoPost/>
 
     return (
-        <div>
+        <>
             {post.map(post => <PostItem key={post.id} post={post}/>)}
-        </div>
+        </>
     );
 };
 

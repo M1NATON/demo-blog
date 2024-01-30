@@ -44,6 +44,29 @@ export const postDelete:any = (postID: number) =>{
     }
 }
 
+export const postUpdate:any = (postID: number, content: string, title: string) => {
+    return async (dispatch: Dispatch<PostAction>) => {
+        try {
+            dispatch({type: PostActionType.POST_FETCH})
+            const token = localStorage.getItem('token')
+            const response = await axios.patch<IPost>(`http://localhost:8000/api/posts/${postID}`, {
+                content,
+                title
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            dispatch({
+                type: PostActionType.POST_FETCH_UPDATE,
+                payload: response.data
+            })
+        } catch (e) {
+            console.log('Error patch', e)
+        }
+    }
+}
+
 export const postDetails: any = (postId: number) => {
     return async (dispatch: Dispatch<PostAction>) => {
         try {

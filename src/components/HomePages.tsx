@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useTypeSelector} from "../hooks/UseTypeSelector";
 import Post from "./Post/Post";
 import {useAction} from "../hooks/useAction";
@@ -15,8 +15,7 @@ const HomePages = () => {
     const {user} = useTypeSelector(state => state.user)
 
     const {auth, logout} = useAction()
-    const {open, close, modal} = useContext(ModalContext)
-
+    const {modal, open, close} = useContext(ModalContext)
     useEffect(() => {
         auth()
     }, [])

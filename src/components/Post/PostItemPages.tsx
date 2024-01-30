@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {useAction} from "../../hooks/useAction";
 import {useNavigate, useParams} from "react-router-dom";
 import {useTypeSelector} from "../../hooks/UseTypeSelector";
@@ -6,6 +6,8 @@ import Loading from "../Loading";
 import {IPost} from "../../type/post";
 import PostItem from "./PostItem";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import EditIcon from "@mui/icons-material/Edit";
+import {ModalContext} from "../../context/ModalContxt";
 
 const PostItemPages = () => {
 
@@ -16,6 +18,12 @@ const PostItemPages = () => {
         postDetails(Number(postId));
     }, []);
 
+
+
+
+
+
+
     const navigate = useNavigate()
     if (loading) return <Loading/>
     const postI: IPost = post[0]
@@ -23,7 +31,12 @@ const PostItemPages = () => {
         <div className='container mx-auto'>
             <div className="w-[600px] mx-auto mt-[25%]">
                 <PostItem post={postI}/>
-                <button onClick={() => navigate('/home')} className='animate-pulse'><ArrowBackIcon sx={{ fontSize: 40 }}/></button>
+                <div className="flex justify-between">
+                    <button onClick={() => navigate('/home')} className='animate-pulse'><ArrowBackIcon
+                        sx={{fontSize: 40}}/></button>
+
+                </div>
+
             </div>
         </div>
     );
