@@ -3,12 +3,14 @@ import {auth, login, registration} from "../../store/action/user";
 import {useDispatch} from "react-redux";
 import {useAction} from "../../hooks/useAction";
 import {successfullyRegistration} from "./SuccessfullyRegistration";
+import {TextField} from "@mui/material";
+import {useTypeSelector} from "../../hooks/UseTypeSelector";
 
 const Login: React.FC = () => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-
+    const [err, setErr] = useState(false)
     const loginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value)
     }
@@ -16,38 +18,60 @@ const Login: React.FC = () => {
         setPassword(e.target.value)
     }
     const {login, registration} = useAction()
+    const {error} = useTypeSelector(state => state.user)
+
+    const clearErr = () => {
+        setTimeout(() => {
+            setErr(false)
+        }, 2000)
+    }
+
+
     const btnLogin = () => {
-        login(username, password)
+
+        if (!username && !password) {
+            setErr(true)
+            clearErr()
+        } else {
+            login(username, password)
+        }
+
+
     }
 
-
-
-    const btnRegistration = () => {
-        registration(username, password)
-        setUsername('')
-        setPassword('')
-        successfullyRegistration()
+    const btnRegistration = async () => {
+        if (username === '' && password === '') {
+            setErr(true)
+            clearErr()
+        } else {
+            await registration(username, password)
+            login(username, password)
+            successfullyRegistration()
+        }
     }
-
+    console.log(error)
 
     return (
         <div className='m-auto container mt-[300px]'>
             <div className='w-[200px] mx-auto'>
                 <div className="form">
-                    <input
-                        type='text'
-                        placeholder='login'
+                    <TextField
+                        id="filled-error"
+                        label="Имя пользователя"
+                        variant="filled"
                         onChange={loginChange}
                         value={username}
-                        className='border-2 p-2'
                     />
-                    <input
+                    <TextField
+                        id="filled-password"
                         type='password'
-                        placeholder='password'
+                        label="Пароль"
+                        variant="filled"
                         onChange={passwordChange}
                         value={password}
-                        className='border-2 p-2'
                     />
+                    {error && <p className='text-red-500'>{error}</p>}
+                    {err && <p className='text-red-500'>Вы не ввели данные</p>}
                 </div>
 
                 <div className="btnBlock flex justify-between">

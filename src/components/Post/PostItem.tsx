@@ -41,6 +41,7 @@ const PostItem = ({post}: any) => {
     }
 
     const btnUpdateText = async (e: React.FormEvent) => {
+        e.preventDefault()
         await postUpdate(post.id, content, title)
         setEdited(true)
         setContent('')

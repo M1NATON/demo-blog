@@ -22,7 +22,11 @@ export const registration: any =  (username: string, password: string) => {
             console.log(response.data)
 
         } catch (e) {
-            console.log(e)
+            dispatch({
+                type: UserActionType.ERROR,
+                // @ts-ignore
+                payload: e.response.data.message
+            })
         }
     }
 }
@@ -51,7 +55,11 @@ export const login: any = (username: string, password: string) => {
 
 
         } catch (e) {
-            console.log('err', e)
+            dispatch({
+                type: UserActionType.ERROR,
+                // @ts-ignore
+                payload: e.response.data.message
+            })
         }
     }
 }

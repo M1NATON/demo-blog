@@ -2,7 +2,8 @@
 export enum UserActionType {
     SET_USER = 'SET_USER',
     LOADING_USER = 'LOADING_USER',
-    LOGOUT = 'LOGOUT'
+    LOGOUT = 'LOGOUT',
+    ERROR = 'ERROR'
 }
 interface User{
     id: number;
@@ -12,11 +13,16 @@ interface User{
 export interface UserState{
     user: User,
     loading: boolean,
-    isAuth: boolean
+    isAuth: boolean,
+    error: string | null
 }
 
 interface LoadingUserAction {
     type: UserActionType.LOADING_USER
+}
+interface ErrorUserAction {
+    type: UserActionType.ERROR
+    payload: string
 }
 
 interface SetUserAction {
@@ -29,4 +35,4 @@ interface LogoutAction {
 }
 
 
-export type UserAction = SetUserAction | LogoutAction | LoadingUserAction;
+export type UserAction = SetUserAction | LogoutAction | LoadingUserAction | ErrorUserAction

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {useAction} from "../../hooks/useAction";
 import {useNavigate, useParams} from "react-router-dom";
 import {useTypeSelector} from "../../hooks/UseTypeSelector";
@@ -6,8 +6,7 @@ import Loading from "../Loading";
 import {IPost} from "../../type/post";
 import PostItem from "./PostItem";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import EditIcon from "@mui/icons-material/Edit";
-import {ModalContext} from "../../context/ModalContxt";
+
 
 const PostItemPages = () => {
 
