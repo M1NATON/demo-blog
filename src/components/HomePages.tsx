@@ -44,7 +44,6 @@ const HomePages = () => {
             </div>
 
             <div>
-                <h1>Список всех постов</h1>
                 <Post/>
             </div>
         </div>
